@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SOS Warzone</title>
+
+  <!-- Memasukkan Bootstrap dari CDN -->
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+
+    body {
+
+      background-color: #f1f1f1;
+
+      font-family: 'Arial', sans-serif;
+
+    }
+
+
+
+    h2, h3 {
+
+      color: #333;
+
+    }
+
+
+
+    .board {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-rows: repeat(3, 1fr);
+
+      gap: 10px;
+
+      width: 300px;
+
+      height: 300px;
+
+      margin: 40px auto;
+
+      border: 5px solid #333;
+
+      border-radius: 10px;
+
+      background-color: #fff;
+
+    }
+
+
+
+    .cell {
+
+      background-color: #f4f4f4;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 3em;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+      border: 2px solid #ddd;
+
+      border-radius: 8px;
+
+      transition: background-color 0.3s ease;
+
+    }
+
+
+
+    .cell:hover {
+
+      background-color: #e0e0e0;
+
+    }
+
+
+
+    .cell.X {
+
+      color: #d9534f;
+
+    }
+
+
+
+    .cell.O {
+
+      color: #0275d8;
+
+    }
+
+
+
+    button {
+
+      font-size: 1.2em;
+
+      margin-top: 20px;
+
+    }
+
+
+
+    .container {
+
+      text-align: center;
+
+    }
+
+
+
+    footer {
+
+      background-color: #343a40;
+
+      color: #fff;
+
+      padding: 20px;
+
+      margin-top: 40px;
+
+    }
+
+
+
+    #navbarNav .nav-item .nav-link {
+
+      font-size: 1.1em;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Navbar -->
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <div class="container-fluid">
+
+      <a class="navbar-brand" href="#">Tic-Tac-Toe</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+
+        <ul class="navbar-nav ms-auto">
+
+          <li class="nav-item">
+
+            <a class="nav-link" href="#about">About</a>
+
+          </li>
+
+          <li class="nav-item">
+
+            <a class="nav-link" href="#howToPlay">How to Play</a>
+
+          </li>
+
+          <li class="nav-item">
+
+            <a class="nav-link" href="#credits">Credits</a>
+
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+
+  <!-- Game Section -->
+
+  <section class="container" id="game">
+
+    <h2>Tic-Tac-Toe Game</h2>
+
+    <div class="board">
+
+      <div class="cell" data-cell-index="0"></div>
+
+      <div class="cell" data-cell-index="1"></div>
+
+      <div class="cell" data-cell-index="2"></div>
+
+      <div class="cell" data-cell-index="3"></div>
+
+      <div class="cell" data-cell-index="4"></div>
+
+      <div class="cell" data-cell-index="5"></div>
+
+      <div class="cell" data-cell-index="6"></div>
+
+      <div class="cell" data-cell-index="7"></div>
+
+      <div class="cell" data-cell-index="8"></div>
+
+    </div>
+
+    <button id="resetBtn" class="btn btn-primary">Reset Game</button>
+
+  </section>
+
+
+
+  <!-- About Section -->
+
+  <section class="container" id="about">
+
+    <h3>About Game</h3>
+
+    <p>Tic-Tac-Toe, juga dikenal sebagai X-O, adalah permainan papan dua pemain di mana pemain secara bergantian menandai ruang pada papan 3x3 dengan simbol 'X' atau 'O'. Pemain pertama yang berhasil menempatkan tiga simbol berturut-turut, baik secara horizontal, vertikal, atau diagonal, menang.</p>
+
+  </section>
+
+
+
+  <!-- How to Play Section -->
+
+  <section class="container" id="howToPlay">
+
+    <h3>How to Play</h3>
+
+    <p>1. Pemain pertama menggunakan simbol X, dan pemain kedua menggunakan simbol O.<br>
+
+    2. Giliran pemain dimulai dengan memilih salah satu kotak kosong pada papan 3x3.<br>
+
+    3. Pemain yang pertama kali menempatkan tiga simbol secara horizontal, vertikal, atau diagonal akan menang.<br>
+
+    4. Jika papan penuh dan tidak ada pemenang, maka permainan berakhir dengan hasil imbang.</p>
+
+  </section>
+
+
+
+  <!-- Credits Section -->
+
+  <section class="container" id="credits">
+
+    <h3>Credits</h3>
+
+    <p>Game ini dibuat oleh <strong>Your Name</strong> menggunakan HTML, CSS, dan JavaScript. Terinspirasi dari game klasik Tic-Tac-Toe.</p>
+
+  </section>
+
+
+
+  <!-- Footer -->
+
+  <footer>
+
+    <p>&copy; 2025 Tic-Tac-Toe Game | Made with love and JavaScript</p>
+
+  </footer>
+
+
+
+  <!-- Scripts -->
+
+  <script>
+
+    const cells = document.querySelectorAll('.cell');
+
+    const resetButton = document.getElementById('resetBtn');
+
+    let board = ['', '', '', '', '', '', '', '', '']; // Papan permainan
+
+    let currentPlayer = 'X'; // Pemain yang sedang berjalan
+
+    let gameOver = false;
+
+
+
+    function handleClick(event) {
+
+      const index = event.target.getAttribute('data-cell-index');
+
+      
+
+      // Jika sel sudah terisi atau permainan sudah selesai, jangan lakukan apa-apa
+
+      if (board[index] !== '' || gameOver) return;
+
+
+
+      // Isi sel dengan simbol pemain
+
+      board[index] = currentPlayer;
+
+      event.target.textContent = currentPlayer;
+
+      event.target.classList.add(currentPlayer);  // Menambahkan kelas untuk pewarnaan
+
+
+
+      // Cek apakah ada pemenang
+
+      if (checkWinner()) {
+
+        gameOver = true;
+
+        alert(`${currentPlayer} menang!`);
+
+      } else if (board.every(cell => cell !== '')) {
+
+        gameOver = true;
+
+        alert('Hasil imbang!');
+
+      }
+
+
+
+      // Ganti giliran pemain
+
+      currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+
+    }
+
+
+
+    function checkWinner() {
+
+      const winningCombinations = [
+
+        [0, 1, 2],
+
+        [3, 4, 5],
+
+        [6, 7, 8],
+
+        [0, 3, 6],
+
+        [1, 4, 7],
+
+        [2, 5, 8],
+
+        [0, 4, 8],
+
+        [2, 4, 6]
+
+      ];
+
+
+
+      return winningCombinations.some(combination => {
+
+        const [a, b, c] = combination;
+
+        return board[a] !== '' && board[a] === board[b] && board[a] === board[c];
+
+      });
+
+    }
+
+
+
+    function resetGame() {
+
+      board = ['', '', '', '', '', '', '', '', ''];
+
+      gameOver = false;
+
+      currentPlayer = 'X';
+
+      cells.forEach(cell => {
+
+        cell.textContent = '';
+
+        cell.classList.remove('X', 'O'); // Hapus kelas setelah reset
+
+      });
+
+    }
+
+
+
+    cells.forEach(cell => cell.addEventListener('click', handleClick));
+
+    resetButton.addEventListener('click', resetGame);
+
+  </script>
+
+
+
+  <!-- Memasukkan Bootstrap JS -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
+
+  
